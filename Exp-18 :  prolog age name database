@@ -1,0 +1,13 @@
+:- discontiguous person/2.
+
+person(john, date(10, june, 1980)). 
+person(mary, date(12, march, 1985)).
+person(peter, date(3, may, 1975)).
+
+date(Day, Month, Year) :-
+    Day > 0, Day =< 31,
+    member(Month, [jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec]),
+    Year > 1900.
+    
+person(Name, Date) :-
+    person(Name, Date).
