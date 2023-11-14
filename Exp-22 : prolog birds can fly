@@ -1,0 +1,17 @@
+bird(penguin).
+bird(ostrich).
+bird(eagle).
+bird(hummingbird).
+
+% Facts about flying ability
+flies(eagle).
+flies(hummingbird).
+
+% Rules
+can_fly(B) :- 
+   bird(B),
+   flies(B).
+   
+cannot_fly(B) :-
+   bird(B),
+   not(flies(B)).
