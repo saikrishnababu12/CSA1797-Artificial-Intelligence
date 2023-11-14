@@ -1,0 +1,12 @@
+orbits(mercury, sun).
+orbits(venus, sun). 
+orbits(earth, sun).
+orbits(mars, sun).
+
+planet(mercury).
+planet(venus).  
+planet(earth).
+planet(mars).
+
+planet(P) :- 
+   orbits(P, sun).
