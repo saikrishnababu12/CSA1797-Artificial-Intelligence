@@ -1,0 +1,14 @@
+has_condition(john, diabetes).
+has_condition(mary, hypertension).
+has_condition(bob, gluten_intolerance).
+
+% Facts about diets
+diet(diabetes, low_sugar).
+diet(hypertension, low_sodium).
+diet(gluten_intolerance, gluten_free).
+
+% Rules
+suggest_diet(Person, Diet) :-
+   has_condition(Person, Condition),
+   diet(Condition, Diet).
+   
