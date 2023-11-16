@@ -1,0 +1,21 @@
+% Facts
+likes(john, pizza).
+likes(mary, pasta).
+healthy(pizza). 
+healthy(pasta).
+
+% Rules
+eats(X, Y) :- likes(X, Y).
+recommends(X, Y) :- eats(X, Y), healthy(Y).
+
+% Queries 
+?- recommends_bwd(X, pasta).
+?- eats_bwd(john, X).
+
+% Backward chaining predicates
+recommends_bwd(X, Y) :-
+    eats_bwd(X, Y),
+    healthy(Y).
+    
+eats_bwd(X, Y) :-
+   likes(X, Y).
