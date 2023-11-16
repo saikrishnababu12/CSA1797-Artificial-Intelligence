@@ -1,0 +1,24 @@
+% Facts about nodes and edges
+edge(a,b,5). 
+edge(a,c,3).
+edge(b,d,10).
+edge(b,e,8).
+edge(c,d,6).
+edge(c,f,5).
+edge(d,e,2).
+edge(e,f,6).
+edge(f,g,1).
+
+% Rules for path finding
+path(Start, Goal, Cost, [Start]) :- 
+    edge(Start, Goal, Cost).
+
+path(Start, Goal, Cost, [Start|Path]) :-
+    edge(Start, Next, Cost1),
+    path(Next, Goal, Cost2, Path),
+    Cost is Cost1 + Cost2.
+
+% Fetch path with lowest cost first    
+best_first_search(Start, Goal, Path) :-
+    findall([Cost,Path], path(Start,Goal,Cost,Path), L),
+    sort(L, [ [_Cost,Path] |_]).
